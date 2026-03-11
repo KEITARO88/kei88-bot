@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boss Timer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>KEI88 BOT</h1>
+      <p>L2M TRACKER</p>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="input-panel">
+      <input type="text" id="searchBoss" placeholder="Cari boss..." />
+      
+      <select id="bossSelect">
+        <option value="">-- Pilih Boss --</option>
+      </select>
+
+      <input type="test" id="deathTime" />
+
+      <button id="addBossBtn">Tambah Timer</button>
+    </section>
+
+    <section class="section-block">
+      <div class="section-title">SPAWN IMMINENCE</div>
+      <div id="spawnGrid" class="boss-grid"></div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-title">OTHER BOSSES</div>
+      <div id="otherGrid" class="boss-grid"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
