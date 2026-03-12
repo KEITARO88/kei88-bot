@@ -1,6 +1,9 @@
 let bosses = [];
 let activeTimers = [];
 
+const HOUR_MS = 60 * 60 * 1000;
+const AUTO_ROLLOVER_MS = 5 * 60 * 1000; // 5 menit setelah READY
+
 const searchBoss = document.getElementById("searchBoss");
 const bossSelect = document.getElementById("bossSelect");
 const deathTime = document.getElementById("deathTime");
@@ -14,6 +17,7 @@ async function loadBosses() {
   populateBossOptions(bosses);
 
   activeTimers = loadTimersLocal();
+  autoRollExpiredTimers();
 
   renderBossSections();
 }
@@ -204,8 +208,30 @@ function loadTimersLocal() {
   return saved ? JSON.parse(saved) : [];
 }
 
+function autoRollExpiredTimers() {
+  const now = Date.now();
+  let changed = false;
+
+  activeTimers.forEach((timer) => {
+    const intervalMs = timer.respawnHours * HOUR_MS;
+
+    while (now - timer.nextSpawn >= AUTO_ROLLOVER_MS) {
+      timer.nextSpawn += intervalMs;
+      timer.killedAt = timer.nextSpawn - intervalMs;
+      changed = true;
+    }
+  });
+
+  if (changed) {
+    activeTimers.sort((a, b) => a.nextSpawn - b.nextSpawn);
+    saveTimersLocal();
+  }
+}
+
 setInterval(() => {
+  autoRollExpiredTimers();
   renderBossSections();
 }, 1000);
+
 
 loadBosses();

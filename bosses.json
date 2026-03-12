@@ -198,5 +198,30 @@
     "name": "ANDREAS",
     "region":"ADEN",
     "respawnHours": 15
+  },
+  {
+    "name": "REPIRO NS",
+    "region":"OREN",
+    "respawnHours": 7
+  },
+  {
+    "name": "GAHARETH NS",
+    "region":"OREN",
+    "respawnHours": 9 
+  },
+  {
+    "name": "KELSUS NS",
+    "region":"GLUDIO",
+    "respawnHours":10
+  },
+  {
+    "name": "BALBO NS",
+    "region": "OREN",
+    "respawnHours":12
+  },
+  {
+    "name": "SELU NS",
+    "region":"OREN",
+    "respawnHours":12
   }
 ]
