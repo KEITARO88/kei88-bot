@@ -31,6 +31,23 @@ async function loadBosses() {
   renderBossSections();
 }
 
+async function testInsertBoss() {
+  const { data, error } = await supabaseClient
+    .from("boss_timers")
+    .insert([
+      {
+        boss_id: "boss_test_001",
+        boss_name: "Boss Test",
+        death_time: new Date().toISOString(),
+        next_spawn_time: new Date(Date.now() + 60 * 60 * 1000).toISOString(),
+        status: "active"
+      }
+    ]);
+
+  console.log("INSERT DATA:", data);
+  console.log("INSERT ERROR:", error);
+}
+
 function populateBossOptions(data) {
   bossSelect.innerHTML = `<option value="">-- Pilih Boss --</option>`;
 
@@ -244,3 +261,4 @@ setInterval(() => {
 
 
 loadBosses();
+//testInsertBoss();
