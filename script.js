@@ -11,6 +11,15 @@ const addBossBtn = document.getElementById("addBossBtn");
 const spawnGrid = document.getElementById("spawnGrid");
 const otherGrid = document.getElementById("otherGrid");
 
+
+const SUPABASE_URL = "https://jiwyoxfrrkokspbsyyzu.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_xVUesaxxq4aAnnKNP9JThA_KHDPvyaY";
+
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
 async function loadBosses() {
   const response = await fetch("bosses.json");
   bosses = await response.json();
